@@ -57,29 +57,27 @@ echo "📚 LLM-Modell installieren:"
 echo ""
 echo "Empfohlene Modelle für M4 MacBook Air:"
 echo ""
-echo "1. Llama 3.2 (3B) - Schnell, Deutsch OK"
+echo "1. LeoLM 13B (DEUTSCH) - Beste Wahl für deutsche Dokumente"
+echo "   ./install-leolm.sh"
+echo "   Größe: ~7.5 GB"
+echo ""
+echo "2. Llama 3.2 (3B) - Schnell, Deutsch OK"
 echo "   docker compose exec ollama ollama pull llama3.2"
 echo "   Größe: ~2.8 GB"
 echo ""
-echo "2. Mistral (7B) - Besser, etwas langsamer"
-echo "   docker compose exec ollama ollama pull mistral"
-echo "   Größe: ~4.1 GB"
+echo "3. Qwen2.5 (14B) - Sehr gut für Dokumente"
+echo "   docker compose exec ollama ollama pull qwen2.5:14b"
+echo "   Größe: ~9 GB"
 echo ""
-echo "3. Llama 3.1 (8B) - Sehr gut, braucht mehr RAM"
-echo "   docker compose exec ollama ollama pull llama3.1:8b"
-echo "   Größe: ~4.7 GB"
-echo ""
-read -p "Möchten Sie jetzt Llama 3.2 installieren? (j/n) " -n 1 -r
+read -p "Möchten Sie jetzt LeoLM 13B (Deutsch) installieren? (j/n) " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Jj]$ ]]; then
     echo ""
-    echo "📥 Lade Llama 3.2 Modell herunter (~2.8 GB)..."
-    docker compose exec ollama ollama pull llama3.2
-    
-    echo ""
-    echo "🧪 Teste Modell..."
-    docker compose exec ollama ollama run llama3.2 "Hallo! Sage mir in einem Satz, wer du bist."
+    echo "📥 Starte LeoLM Installation..."
+    cd "$(dirname "$0")"
+    chmod +x install-leolm.sh
+    ./install-leolm.sh
 fi
 
 echo ""

@@ -100,9 +100,12 @@ ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Scans ./consume/scans
 
 ### Modelle verwalten
 ```bash
-# Installieren
+# Standard-Modelle installieren
 docker compose exec ollama ollama pull llama3.2
-docker compose exec ollama ollama pull mistral
+docker compose exec ollama ollama pull qwen2.5:14b
+
+# Deutsches LeoLM 13B (GGUF) - BESTE für deutsche Dokumente
+./install-leolm.sh
 
 # Auflisten
 docker compose exec ollama ollama list
@@ -111,7 +114,7 @@ docker compose exec ollama ollama list
 docker compose exec ollama ollama rm <model>
 
 # Testen
-docker compose exec ollama ollama run llama3.2 "Hallo!"
+docker compose exec ollama ollama run leolm:13b "Extrahiere Datum und Betrag: Rechnung vom 15.01.2024, 1.234,56€"
 ```
 
 ### API-Zugriff

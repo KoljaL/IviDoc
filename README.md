@@ -222,11 +222,15 @@ docker compose --profile ai up -d
 # Llama 3.2 Modell installieren (2.8 GB)
 docker compose exec ollama ollama pull llama3.2
 
+# Oder: Deutsches LeoLM 13B (optimal für deutsche Dokumente)
+./install-leolm.sh
+
 # Dokument analysieren
 docker compose exec ollama ollama run llama3.2 "Fasse diesen Text zusammen: ..."
+docker compose exec ollama ollama run leolm:13b "Extrahiere Rechnungsdaten: ..."
 
 # API-Zugriff für eigene Scripte
-curl http://localhost:11434/api/generate -d '{"model":"llama3.2","prompt":"..."}'
+curl http://localhost:11434/api/generate -d '{"model":"leolm:13b","prompt":"..."}'
 ```
 
 ### Paperless-AI Features

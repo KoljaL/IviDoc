@@ -162,8 +162,9 @@ if $WITH_AI; then
     echo "   • Paperless-AI ist aktiv"
     echo ""
     echo "📚 LLM-Modell installieren:"
+    echo "   ./install-leolm.sh            # LeoLM 13B (Deutsch) - EMPFOHLEN"
     echo "   docker compose exec ollama ollama pull llama3.2"
-    echo "   docker compose exec ollama ollama pull mistral"
+    echo "   docker compose exec ollama ollama pull qwen2.5:14b"
 else
     echo ""
     echo "💡 AI später aktivieren:"
